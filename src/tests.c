@@ -415,6 +415,60 @@ int test_create_triangle_equal() {
     return 0;
 }
 
+/**
+ * Tests calculate_polygon_area for rectangle
+*/
+int test_polygon_area_rectangle() {
+    printf("20. test_polygon_area_rectangle()\n");
+    Polygon* rect = create_rectangle(5, 10);
+    if (rect == NULL) {
+        return 0;
+    }
+    
+    double area = calculate_polygon_area(rect);
+    free_polygon(rect);
+    
+    // Area should be 50
+    if (fabs(area - 50.0) < 0.001) {
+        return 1;
+    }
+    return 0;
+}
+
+/**
+ * Tests calculate_polygon_area for triangle
+*/
+int test_polygon_area_triangle() {
+    printf("21. test_polygon_area_triangle()\n");
+    Polygon* tri = create_triangle(5, 10);
+    if (tri == NULL) {
+        return 0;
+    }
+    
+    double area = calculate_polygon_area(tri);
+    free_polygon(tri);
+    
+    // Area should be 25 (5*10/2)
+    if (fabs(area - 25.0) < 0.001) {
+        return 1;
+    }
+    return 0;
+}
+
+/**
+ * Tests calculate_polygon_area with NULL
+*/
+int test_polygon_area_null() {
+    printf("22. test_polygon_area_null()\n");
+    double area = calculate_polygon_area(NULL);
+    
+    // Should return 0 for NULL polygon
+    if (fabs(area - 0.0) < 0.001) {
+        return 1;
+    }
+    return 0;
+}
+
 
 // this is a list of all the unit tests
 int (*unitTests[])() = {
