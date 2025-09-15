@@ -21,7 +21,23 @@ int * create_simple_array(int size) {
     return arr;
 }
 
-/**
+ /**
+  * Tests swap with same values
+**/
+int test_swap_two(){
+    printf("3. test_swap_two()\n");
+    int a = 7;
+    int b = 7;
+    swap(&a, &b);
+    if (a == 7 && b == 7) {
+        return 1;
+    }
+    return 0;
+}
+ 
+
+
+
  * Tests a basic swap
 */
 int test_swap_one() {
