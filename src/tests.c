@@ -8,7 +8,7 @@
 
 #include <stdio.h>  // basic input and output
 #include <stdlib.h> // standard library
-
+#include <math.h>   // for fabs in polygon area test
 #include "cpractice.h" // header file for cpractice.c
 
 
@@ -68,24 +68,6 @@ int test_create_array_of_ints_fib() {
     return 1;
 }
 
-
-
-/**
- * Tests the create_array_of_ints_fib function
-*/
-int test_create_array_of_ints_fib_2() {
-    printf("3. test_create_array_of_ints_fib()\n"); // Test for Fibonacci sequence array creation
-    int* arr = create_array_of_ints_fib(5);
-    int expected[] = {1, 1, 2, 3, 5};
-    for (int i = 0; i < 5; i++) {
-        if (arr[i] != expected[i]) { // Compare each element with expected values
-            free(arr);
-            return 0;
-        }
-    }
-    free(arr);
-    return 1;
-}
 
 /**
  * Tests create_array_of_ints_fib with edge cases
@@ -470,10 +452,31 @@ int test_polygon_area_null() {
 }
 
 
+
 // this is a list of all the unit tests
 int (*unitTests[])() = {
         test_swap_one,
+        test_swap_two,
         test_create_array_of_ints_fib,
+        test_create_array_of_ints_fib_edge,
+        test_reverse_array_even,
+        test_reverse_array_odd,
+        test_double_array_size_normal,
+        test_double_array_size_null,
+        test_copy_array_normal_range,
+        test_copy_array_wrap_around,
+        test_copy_array_invalid_bounds,
+        test_create_point_positive,
+        test_create_point_negative,
+        test_create_polygon_valid,
+        test_create_polygon_invalid,
+        test_create_rectangle_basic,
+        test_create_rectangle_square,
+        test_create_triangle_basic,
+        test_create_triangle_equal,
+        test_polygon_area_rectangle,
+        test_polygon_area_triangle,
+        test_polygon_area_null
         // add more test function names here
 };
 

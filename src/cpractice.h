@@ -227,15 +227,14 @@ Point* create_point(int x, int y){
 Polygon* create_polygon(int size) {
     if (size <= 0) {
         return NULL; // Return NULL for non-positive sizes
-    }
-    Polygon *poly = (Polygon *)malloc(sizeof(Polygon)); // Allocate memory for Polygon
+    }Polygon *poly = (Polygon *)malloc(sizeof(Polygon)); // Allocate memory for a Polygon
     if (!poly) {
         return NULL; // Return NULL if memory allocation fails
     }
-    poly->size = size; // Set the size
-    poly->points = (Point **)malloc(size * sizeof(Point *)); // Allocate memory for points array
+    poly->size = size; // Set the size of the polygon
+    poly->points = (Point **)calloc(size, sizeof(Point *)); // Allocate memory for the array of Point pointers
     if (!poly->points) {
-        free(poly); // Free previously allocated memory if points allocation fails
+        free(poly); // Free previously allocated memory if allocation fails
         return NULL;
     }
     return poly; // Return the pointer to the new Polygon
@@ -256,7 +255,7 @@ void free_polygon(Polygon *p){
         }
         free(p->points); // Free the points array
     }
-    free(p); // Free the Polygon itself
+    free(p); // Free the Polygon struct itself
 }
 
 /**
