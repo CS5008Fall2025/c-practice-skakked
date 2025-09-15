@@ -284,7 +284,14 @@ Polygon* create_rectangle(int width, int height){
  * width, height
 */
 Polygon* create_triangle(int width, int height){
-    return NULL;
+    Polygon *poly = create_polygon(3); // Create a polygon with 3 points
+    if (!poly) {
+        return NULL; // Return NULL if polygon creation fails
+    }
+    poly->points[0] = create_point(0, 0);
+    poly->points[1] = create_point(width, 0);
+    poly->points[2] = create_point(width, height);
+    return poly; // Return the pointer to the new triangle polygon
 }
 
 /**
