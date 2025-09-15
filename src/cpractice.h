@@ -325,7 +325,19 @@ void print_polygon(Polygon *p){
  * after area is summed across all points, divide by 2.0 and return the area.
 */
 double calculate_polygon_area(Polygon *p){
-    return 0.0;
+    if (!p || p->size < 3) {
+        return 0.0; // Return 0 for NULL polygon or polygons with less than 3 points
+    }
+    long long sum = 0; // Use long long to prevent overflow
+    for (int i = 0; i < p->size; i++) {
+        int j = (i + 1) % p->size; // Next index, wrapping around
+        Point *a = p->points[i];
+        Point *b = p->points[j];
+        long long cross = (long long)a->x * b->y - (long long)b->x * a->y;
+        sum += cross;
+    }
+    if (sum < 0) sum = -sum; // Ensure area is non-negative
+    return sum / 2.0; // Return the area
 }
 
 #endif // C_PRACTICE_H
