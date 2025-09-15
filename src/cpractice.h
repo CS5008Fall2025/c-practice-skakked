@@ -210,7 +210,13 @@ Practice with struts
  * and returns the new point
 */
 Point* create_point(int x, int y){
-    return NULL;
+    Point *p = (Point *)malloc(sizeof(Point)); // Allocate memory for a Point
+    if (!p) {
+        return NULL; // Return NULL if memory allocation fails
+    }
+    p->x = x; // Set the x coordinate
+    p->y = y; // Set the y coordinate
+    return p; // Return the pointer to the new Point
 }
 
 /**
