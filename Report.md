@@ -2,9 +2,6 @@
 
 Completely answer the report questions below. Make sure to double check the final version to make sure it is easily readable on your github repository. 
 
-
-
-
 1. What is the difference between a standard numeric type (int, float, double) and a pointer?
    > A standard numeric type stores  the value directly in the memory while a pointer stores a memory adress that points to where a value is located.
    
@@ -105,14 +102,18 @@ Completely answer the report questions below. Make sure to double check the fina
  
 
 8. Looking at the struct Point and Polygon, we have a mix of values on the heap, and we make ample use of pointers. Take a moment to draw out how you think that looks after `create_triangle(2,3)` is called (see an example below). The important part of the drawing it to see that not everything is stored together in memory, but in different locations! Store the image file in your github repo and link it here. You can use any program to draw it such as [drawIO](https://app.diagrams.net/), or even draw it by hand and take a picture of it. 
+> Memory diagram is here !['Memory drawing for create triangle(2,3)'](https://github.com/CS5008Fall2025/c-practice-skakked/blob/main/Files/Memory%20Diagram.jpeg) 
 
 
 ## Technical Interview Practice Questions
 For both these questions, are you are free to use what you did as the last section on the team activities/answered as a group, or you can use a different question.
 
 1. Select one technical interview question (this module or previous) from the [technical interview list](https://github.com/CS5008-khoury/Resources/blob/main/TechInterviewQuestions.md) below and answer it in a few sentences. You can use any resource you like to answer the question.
+> What is the difference between git add and git commit?
+> Git add adds items/files to a staging area or a temp holding area while git commit records those staged changes in the repository history with a unique commit ID. Added files remain staged until you commit them. 
 
 2. Select one coding question (this module or previous) from the [coding practice repository](https://github.com/CS5008-khoury/Resources/blob/main/LeetCodePractice.md) and include a c file with that code with your submission. Make sure to add comments on what you learned, and if you compared your solution with others. 
+
 
 ## Deeper Thinking
 In Java and Python, do you think new objects are stored on the stack or the heap? Feel free to work through your thoughts as to why it would be better to store them on the stack or heap. You should consider pass by reference, and how that is similar to pointer in your answer. Feel free to use resources, but make sure to cite them, and include the citation below using ACM format. You will note LLMs are not valid references, but they can give you directions to valid references. Make sure to use your own words. 
