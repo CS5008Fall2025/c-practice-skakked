@@ -91,7 +91,19 @@ void print_array(int *arr, int size)
  * here is a quick list of numbers: https://www.math.net/list-of-fibonacci-numbers
  **/
 int* create_array_of_ints_fib(int size){
-    return NULL;
+    if (size <= 0) {
+        return NULL; // Return NULL for non-positive sizes
+    }
+    int *arr = (int *)malloc(size * sizeof(int)); // Allocate memory for the array
+    if (!arr) {
+        return NULL; // Return NULL if memory allocation fails
+    }
+    arr[0] = 1; // First Fibonacci number
+    if (size >=2) arr [1] = 1; // Second Fibonacci number
+    for (int i = 2; i < size; i++) {
+        arr[i] = arr[i - 1] + arr[i - 2]; // Calculate Fibonacci numbers
+    }
+    return arr; // Return the pointer to the array
 }
 
 /**
