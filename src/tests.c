@@ -180,7 +180,28 @@ int test_double_array_size_null() {
     return 0;
 }
 
-
+/**
+ * Tests copy_array_start_end_loop without wrap
+*/
+int test_copy_array_normal_range() {
+    printf("9. test_copy_array_normal_range()\n");
+    int arr[] = {1, 2, 3, 4, 5};
+    int new_size;
+    int* result = copy_array_start_end_loop(arr, 5, 1, 3, &new_size);
+    
+    if (result == NULL || new_size != 3) {
+        if (result) free(result);
+        return 0;
+    }
+    
+    if (result[0] == 2 && result[1] == 3 && result[2] == 4) {
+        free(result);
+        return 1;
+    }
+    
+    free(result);
+    return 0;
+}
 
 // this is a list of all the unit tests
 int (*unitTests[])() = {
