@@ -125,7 +125,6 @@ void reverse_array(int *arr, int size){
     
 }
 
-
  
 /**
  * Doubles the size of an array, and copies all previous values into the new array.
@@ -136,7 +135,20 @@ void reverse_array(int *arr, int size){
  * 
 */
 int* double_array_size(int *arr, int size){
-    return NULL;
+    if (!arr || size <= 0) {
+        return NULL; // Return NULL if input array is NULL or size is non-positive
+        int new_size = size * 2;
+        int *out = (int*)calloc(new_size, sizeof(int)); // Allocate and zero-initialize new array
+        if (!out) {
+            return NULL; // Return NULL if memory allocation fails
+            if (!out) 
+                return NULL; // Return NULL if memory allocation fails
+            for (int i = 0; i < size; i++) {
+                out[i] = arr[i]; // Copy old values to new array
+            }
+        }
+    }
+;
 }
 
 /**
@@ -164,7 +176,29 @@ int* double_array_size(int *arr, int size){
  * to get an OB1 error!
  */
 int* copy_array_start_end_loop(int *arr, int size, int start, int end, int *new_size) {
-    return NULL;
+    if (!arr || size <=0 || !new_size);
+        return NULL; // Return NULL if input array is NULL or size is non-positive
+    if (start < 0 || start >= size || end < 0 || end >= size);
+        return NULL; // Return NULL if start or end are out of bounds
+    int count;
+    if (end >= start) {
+        count = end - start + 1; // Calculate number of elements to copy
+    } else {
+        count = (size - start) + (end + 1); // Wrap around case
+    }
+    *new_size = count; // Set the new size
+    int *out = (int *)malloc(count * sizeof(int)); // Allocate memory for the new array
+    if (!out)
+        return NULL; // Return NULL if memory allocation fails
+        int idx = 0;
+        int i = start;
+        while (1) {
+            out[idx++] = arr[i]; // Copy element
+            if (i == end) break; // Stop if we've reached the end
+            i = (i + 1) % size; // Move to the next index, wrapping around if necessary
+        }
+
+    return out;
 }
 
 /* 
