@@ -136,6 +136,37 @@ int test_reverse_array_odd() {
     return 0;
 }
 
+/**
+ * Tests double_array_size normal case
+*/
+int test_double_array_size_normal() {
+    printf("7. test_double_array_size_normal()\n");
+    int arr[] = {1, 2, 3};
+    int* result = double_array_size(arr, 3);
+    if (result == NULL) {
+        return 0;
+    }
+    
+    // Check copied values
+    for (int i = 0; i < 3; i++) {
+        if (result[i] != arr[i]) {
+            free(result);
+            return 0;
+        }
+    }
+    
+    // Check zeros
+    for (int i = 3; i < 6; i++) {
+        if (result[i] != 0) {
+            free(result);
+            return 0;
+        }
+    }
+    
+    free(result);
+    return 1;
+}
+
 
 // this is a list of all the unit tests
 int (*unitTests[])() = {
