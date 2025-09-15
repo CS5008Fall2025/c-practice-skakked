@@ -373,6 +373,47 @@ int test_create_rectangle_square() {
     return 0;
 }
 
+/**
+ * Tests create_triangle basic
+*/
+int test_create_triangle_basic() {
+    printf("18. test_create_triangle_basic()\n");
+    Polygon* tri = create_triangle(5, 10);
+    if (tri == NULL || tri->size != 3) {
+        if (tri) free_polygon(tri);
+        return 0;
+    }
+    
+    if (tri->points[0]->x == 0 && tri->points[0]->y == 0 &&
+        tri->points[1]->x == 5 && tri->points[1]->y == 0 &&
+        tri->points[2]->x == 5 && tri->points[2]->y == 10) {
+        free_polygon(tri);
+        return 1;
+    }
+    
+    free_polygon(tri);
+    return 0;
+}
+
+/**
+ * Tests create_triangle with equal sides
+*/
+int test_create_triangle_equal() {
+    printf("19. test_create_triangle_equal()\n");
+    Polygon* tri = create_triangle(8, 8);
+    if (tri == NULL || tri->size != 3) {
+        if (tri) free_polygon(tri);
+        return 0;
+    }
+    
+    if (tri->points[2]->x == 8 && tri->points[2]->y == 8) {
+        free_polygon(tri);
+        return 1;
+    }
+    
+    free_polygon(tri);
+    return 0;
+}
 
 
 // this is a list of all the unit tests
