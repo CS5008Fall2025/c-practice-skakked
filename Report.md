@@ -113,13 +113,13 @@ For both these questions, are you are free to use what you did as the last secti
 > Git add adds items/files to a staging area or a temp holding area while git commit records those staged changes in the repository history with a unique commit ID. Added files remain staged until you commit them. 
 
 2. Select one coding question (this module or previous) from the [coding practice repository](https://github.com/CS5008-khoury/Resources/blob/main/LeetCodePractice.md) and include a c file with that code with your submission. Make sure to add comments on what you learned, and if you compared your solution with others. 
-
+> Picked Two sum: File is here: https://github.com/CS5008Fall2025/c-practice-skakked/blob/main/Files/Two_Sum.c
 
 ## Deeper Thinking
 In Java and Python, do you think new objects are stored on the stack or the heap? Feel free to work through your thoughts as to why it would be better to store them on the stack or heap. You should consider pass by reference, and how that is similar to pointer in your answer. Feel free to use resources, but make sure to cite them, and include the citation below using ACM format. You will note LLMs are not valid references, but they can give you directions to valid references. Make sure to use your own words. 
 
 Answer here using a paragraph (not just bullet points). 
-> 
+> In both Java and Python, objects are stored on the heap, not the stack, and this design choice is fundamental to how these languages handle object-oriented programming and memory management. When you create an object with new in Java or create a class instance in Python, the actual object data resides on the heap while only the reference (essentially a managed pointer) exists on the stack. This heap allocation strategy enables several critical features: objects can have dynamic sizes determined at runtime, their lifetimes can extend beyond the scope where they were created, and they can be shared between different parts of the program through reference passing. It would be better to store them as a heap because this approach also facilitates automatic memory management through garbage collection in both languages, as the runtime can track reference counts or reachability to determine when objects are no longer needed, something that would be impossible with stack allocation where deallocation is deterministic and scope-based.   
 
 
 
