@@ -186,8 +186,9 @@ int* copy_array_start_end_loop(int *arr, int size, int start, int end, int *new_
     }
     *new_size = count; // Set the new size
     int *out = (int *)malloc(count * sizeof(int)); // Allocate memory for the new array
-    if (!out)
+    if (!out) {
         return NULL; // Return NULL if memory allocation fails
+    }
         int idx = 0;
         int i = start;
         while (1) {
