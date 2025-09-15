@@ -329,6 +329,52 @@ int test_create_polygon_invalid() {
     return 1;
 }
 
+/**
+ * Tests create_rectangle basic
+*/
+int test_create_rectangle_basic() {
+    printf("16. test_create_rectangle_basic()\n");
+    Polygon* rect = create_rectangle(5, 10);
+    if (rect == NULL || rect->size != 4) {
+        if (rect) free_polygon(rect);
+        return 0;
+    }
+    
+    // Check all four corners
+    if (rect->points[0]->x == 0 && rect->points[0]->y == 0 &&
+        rect->points[1]->x == 5 && rect->points[1]->y == 0 &&
+        rect->points[2]->x == 5 && rect->points[2]->y == 10 &&
+        rect->points[3]->x == 0 && rect->points[3]->y == 10) {
+        free_polygon(rect);
+        return 1;
+    }
+    
+    free_polygon(rect);
+    return 0;
+}
+
+/**
+ * Tests create_rectangle with square
+*/
+int test_create_rectangle_square() {
+    printf("17. test_create_rectangle_square()\n");
+    Polygon* square = create_rectangle(7, 7);
+    if (square == NULL || square->size != 4) {
+        if (square) free_polygon(square);
+        return 0;
+    }
+    
+    if (square->points[1]->x == 7 && square->points[2]->y == 7) {
+        free_polygon(square);
+        return 1;
+    }
+    
+    free_polygon(square);
+    return 0;
+}
+
+
+
 // this is a list of all the unit tests
 int (*unitTests[])() = {
         test_swap_one,
