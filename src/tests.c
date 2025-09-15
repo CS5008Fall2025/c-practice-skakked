@@ -167,6 +167,20 @@ int test_double_array_size_normal() {
     return 1;
 }
 
+/**
+ * Tests double_array_size with NULL input
+*/
+int test_double_array_size_null() {
+    printf("8. test_double_array_size_null()\n");
+    int* result = double_array_size(NULL, 5);
+    if (result == NULL) {
+        return 1;
+    }
+    free(result);
+    return 0;
+}
+
+
 
 // this is a list of all the unit tests
 int (*unitTests[])() = {
