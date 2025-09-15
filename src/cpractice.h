@@ -226,8 +226,21 @@ Point* create_point(int x, int y){
  * For the points, you are creating the array of points, but you do not have to allocate
  * the point values. it is just a polygon of eventual size, and an array of empty points. 
 */
-Polygon* create_polygon(int size){
-    return NULL;
+Polygon* create_polygon(int size) {
+    if (size <= 0) {
+        return NULL; // Return NULL for non-positive sizes
+    }
+    Polygon *poly = (Polygon *)malloc(sizeof(Polygon)); // Allocate memory for Polygon
+    if (!poly) {
+        return NULL; // Return NULL if memory allocation fails
+    }
+    poly->size = size; // Set the size
+    poly->points = (Point **)malloc(size * sizeof(Point *)); // Allocate memory for points array
+    if (!poly->points) {
+        free(poly); // Free previously allocated memory if points allocation fails
+        return NULL;
+    }
+    return poly; // Return the pointer to the new Polygon
 }
 
 
@@ -236,6 +249,7 @@ Polygon* create_polygon(int size){
  * all the points, to free them, free the array, and then free the polygon itself.
 */
 void free_polygon(Polygon *p){
+
     
 }
 
@@ -249,7 +263,15 @@ void free_polygon(Polygon *p){
  * 0, height
 */
 Polygon* create_rectangle(int width, int height){
-    return NULL;
+    Polygon *poly = create_polygon(4); // Create a polygon with 4 points
+    if (!poly) {
+        return NULL; // Return NULL if polygon creation fails
+    }
+    poly->points[0] = create_point(0, 0);
+    poly->points[1] = create_point(width, 0);
+    poly->points[2] = create_point(width, height);
+    poly->points[3] = create_point(0, height);
+    return poly; // Return the pointer to the new rectangle polygon
 }
 
 
