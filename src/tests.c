@@ -203,6 +203,29 @@ int test_copy_array_normal_range() {
     return 0;
 }
 
+/**
+ * Tests copy_array_start_end_loop with wrap around
+*/
+int test_copy_array_wrap_around() {
+    printf("10. test_copy_array_wrap_around()\n");
+    int arr[] = {1, 2, 3, 4, 5};
+    int new_size;
+    int* result = copy_array_start_end_loop(arr, 5, 3, 1, &new_size);
+    
+    if (result == NULL || new_size != 4) {
+        if (result) free(result);
+        return 0;
+    }
+    
+    if (result[0] == 4 && result[1] == 5 && result[2] == 1 && result[3] == 2) {
+        free(result);
+        return 1;
+    }
+    
+    free(result);
+    return 0;
+}
+
 // this is a list of all the unit tests
 int (*unitTests[])() = {
         test_swap_one,
