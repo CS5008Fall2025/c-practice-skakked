@@ -3,7 +3,7 @@
 Completely answer the report questions below. Make sure to double check the final version to make sure it is easily readable on your github repository. 
 
 1. What is the difference between a standard numeric type (int, float, double) and a pointer?
-   > A standard numeric type stores  the value directly in the memory while a pointer stores a memory adress that points to where a value is located.
+   > A standard numeric type stores  the value directly in the memory, while a pointer stores a memory address that points to where a value is located.
    
 2. In your test file, we had the following code:
     
@@ -13,10 +13,10 @@ Completely answer the report questions below. Make sure to double check the fina
     ```
     Later in the code we only `free(arr)` but not expected. Why is this? What is the difference in where they are stored in memory?
 
-    > arr  was created with malloc is dynamically allocated on the heap while expected array is declared as a local array (int expected[]), which is allocated on the stack. We onl;y free(arr) because only the allocator knows how to free arr because it owns bookkeeping.
+    > arr was created with malloc, which is dynamically allocated on the heap, while the expected array is declared as a local array (int expected[]), which is allocated on the stack[2]. We only free(arr) because only the allocator knows how to free arr because it owns the bookkeeping.
 
 3. What is the difference between the heap and stack when related to memory allocation and management?
-   > The stack is used for automatic/local variables, function parameters, and return addresses. It's managed automatically (LIFO - Last In First Out), has limited size, and memory is deallocated when variables go out of scope. The heap is used for dynamic memory allocation via malloc/calloc, has more available space, requires manual management with free, and memory persists until explicitly freed.
+   > The stack is used for automatic/local variables, function parameters, and return addresses. It's managed automatically (LIFO - Last In First Out), has a limited size, and memory is deallocated when variables go out of scope[2]. The heap is used for dynamic memory allocation via malloc/calloc, has more available space, requires manual management with free, and memory persists until explicitly freed[2].
 
 4. Take the following code:
    ```c
@@ -70,32 +70,32 @@ Completely answer the report questions below. Make sure to double check the fina
    ```
 
 5. When you use `malloc`, where are you storing the information?
-> malloc allocates memory on the heap. The heap is a region of memory used for dynamic allocation during program runtime.
+> malloc allocates memory on the heap. The heap is a region of memory used for dynamic allocation during program runtime[2].
 
 6. Speaking about `malloc` and `calloc`, what is the difference between the two (you may need to research it!)?
-> malloc: Allocates a block of memory of specified size in bytes from the heap.
-> calloc: Allocates memory for an array of elements and initializes all bytes to zero.
+> malloc: Allocates a block of memory of specified size in bytes from the heap[2].
+> calloc: Allocates memory for an array of elements and initializes all bytes to zero[2].
 > malloc vs calloc - Key Differences 
-   (1) Initialization: malloc returns uninitialized memory (contains garbage values), while calloc initializes all allocated memory to zero.
-   (2) Parameters: malloc takes one parameter (total size in bytes), while calloc takes two parameters (number of elements and size of each element).
+   (1) Initialization: malloc returns uninitialized memory (contains garbage values), while calloc initializes all allocated memory to zero[2].
+   (2) Parameters: malloc takes one parameter (total size in bytes), while calloc takes two parameters (number of elements and size of each element)[2].
 
 7. What are some common built in libraries used for C, list at least 3 and explain each one in your own words. Name a few (at least 3) functions in those libraries (hint: we used two of the most common ones in this assignment. There are many resources online that tell you functions in each library - you need to include at least 1 reference, but ideally for every library, you should have a reference to it)?
    - Example: stdlib.h - provides functions for general-purpose operations including
               memory management and random numbers [1].
      - void * malloc(size_t) - allocates memory specified in size on the heap and returns a pointer to that location
      - void * calloc(size_t num_elements, size_t element_size) - contiguous allocation for allocating arrays with the default value of 0. Slower than malloc. 
-     - int rand(void) - returns a random integer between 0 and RAND_MAX. Seed should be set before hand. 
-   1. stdio.h - Standard Input/Output library for file operations and console I/O
+     - int rand(void) - returns a random integer between 0 and RAND_MAX. The seed should be set beforehand. 
+   1. stdio.h - Standard Input/Output library for file operations and console I/O [3]
       * printf(const char *format, ...) - prints formatted output to stdout
       * scanf(const char *format, ...) - reads formatted input from stdin
       * fopen(const char *filename, const char *mode) - opens a file and returns a FILE pointer
    
-   2. string.h - String manipulation and memory operations
+   2. string.h - String manipulation and memory operations [4]
       * strlen(const char *str) - returns the length of a string
       * strcpy(char *dest, const char *src) - copies a string from source to destination
       * memcpy(void *dest, const void *src, size_t n) - copies n bytes from source to destination memory
  
-   3. math.h - Mathematical functions and constants
+   3. math.h - Mathematical functions and constants [5]
       * sqrt(double x) - returns the square root of x
       * pow(double x, double y) - returns x raised to the power of y
       * fabs(double x) - returns the absolute value of a floating-point number
@@ -119,7 +119,7 @@ For both these questions, are you are free to use what you did as the last secti
 In Java and Python, do you think new objects are stored on the stack or the heap? Feel free to work through your thoughts as to why it would be better to store them on the stack or heap. You should consider pass by reference, and how that is similar to pointer in your answer. Feel free to use resources, but make sure to cite them, and include the citation below using ACM format. You will note LLMs are not valid references, but they can give you directions to valid references. Make sure to use your own words. 
 
 Answer here using a paragraph (not just bullet points). 
-> In both Java and Python, objects are stored on the heap, not the stack, and this design choice is fundamental to how these languages handle object-oriented programming and memory management. When you create an object with new in Java or create a class instance in Python, the actual object data resides on the heap while only the reference (essentially a managed pointer) exists on the stack. This heap allocation strategy enables several critical features: objects can have dynamic sizes determined at runtime, their lifetimes can extend beyond the scope where they were created, and they can be shared between different parts of the program through reference passing. It would be better to store them as a heap because this approach also facilitates automatic memory management through garbage collection in both languages, as the runtime can track reference counts or reachability to determine when objects are no longer needed, something that would be impossible with stack allocation where deallocation is deterministic and scope-based.   
+> In both Java and Python, objects are stored on the heap, not the stack, and this design choice is fundamental to how these languages handle object-oriented programming and memory management. When you create an object with new in Java or create a class instance in Python, the actual object data resides on the heap while only the reference (essentially a managed pointer) exists on the stack[6,7]. This heap allocation strategy enables several critical features: objects can have dynamic sizes determined at runtime, their lifetimes can extend beyond the scope where they were created, and they can be shared between different parts of the program through reference passing. It would be better to store them as a heap because this approach also facilitates automatic memory management through garbage collection in both languages, as the runtime can track reference counts or reachability to determine when objects are no longer needed, something that would be impossible with stack allocation, where deallocation is deterministic and scope-based [6,7].   
 
 
 
@@ -129,7 +129,17 @@ Add any references you use here. Use ACM style formatting, adding to the numbers
 
 1. cppreference.com Contributors. 2025. Standard library header <stdlib.h>. cppreference.com. Retrieved May 1, 2025 from https://en.cppreference.com/w/c/header/stdlib
 
-2. ...
+2. Kochan, S. G. 2014. Programming in C (4th ed.). Addison-Wesley Professional. ISBN 978-0-321-77641-9.
+
+3. cppreference.com Contributors. 2025. Standard library header <stdio.h>. cppreference.com. Retrieved January 2025 from https://en.cppreference.com/w/c/header/stdio
+
+4. cppreference.com Contributors. 2025. Standard library header <string.h>. cppreference.com. Retrieved January 2025 from https://en.cppreference.com/w/c/header/string
+
+5. cppreference.com Contributors. 2025. Standard library header <math.h>. cppreference.com. Retrieved January 2025 from https://en.cppreference.com/w/c/header/math
+
+6. Gosling, James, Bill Joy, Guy Steele, Gilad Bracha, and Alex Buckley. 2015. The Java Language Specification, Java SE 8 Edition. Oracle America, Inc. Retrieved from https://docs.oracle.com/javase/specs/jls/se8/html/index.html
+
+7. Van Rossum, Guido, and Python Software Foundation. 2023. Python Language Reference - Data Model. Python Software Foundation. Retrieved from https://docs.python.org/3/reference/datamodel.html
 
 ## Resource/Help: Linking to images?
 To link an image, you use the following code
