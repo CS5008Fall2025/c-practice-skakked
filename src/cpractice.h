@@ -137,19 +137,17 @@ void reverse_array(int *arr, int size){
 int* double_array_size(int *arr, int size){
     if (!arr || size <= 0) {
         return NULL; // Return NULL if input array is NULL or size is non-positive
+    }
         int new_size = size * 2;
         int *out = (int*)calloc(new_size, sizeof(int)); // Allocate and zero-initialize new array
         if (!out) {
             return NULL; // Return NULL if memory allocation fails
-            if (!out) 
-                return NULL; // Return NULL if memory allocation fails
+        }
             for (int i = 0; i < size; i++) {
                 out[i] = arr[i]; // Copy old values to new array
             }
+        return out; // Return the pointer to the new array
         }
-    }
-;
-}
 
 /**
  * Copies elements of an array from start to end (inclusive) into a new array.
@@ -176,9 +174,9 @@ int* double_array_size(int *arr, int size){
  * to get an OB1 error!
  */
 int* copy_array_start_end_loop(int *arr, int size, int start, int end, int *new_size) {
-    if (!arr || size <=0 || !new_size);
+    if (!arr || size <=0 || !new_size)
         return NULL; // Return NULL if input array is NULL or size is non-positive
-    if (start < 0 || start >= size || end < 0 || end >= size);
+    if (start < 0 || start >= size || end < 0 || end >= size)
         return NULL; // Return NULL if start or end are out of bounds
     int count;
     if (end >= start) {
@@ -249,6 +247,7 @@ Polygon* create_polygon(int size) {
  * all the points, to free them, free the array, and then free the polygon itself.
 */
 void free_polygon(Polygon *p){
+
 
     
 }
@@ -341,4 +340,3 @@ double calculate_polygon_area(Polygon *p){
 }
 
 #endif // C_PRACTICE_H
-
