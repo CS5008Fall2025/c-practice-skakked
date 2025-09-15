@@ -226,6 +226,33 @@ int test_copy_array_wrap_around() {
     return 0;
 }
 
+/**
+ * Tests copy_array_start_end_loop with invalid bounds
+*/
+int test_copy_array_invalid_bounds() {
+    printf("11. test_copy_array_invalid_bounds()\n");
+    int arr[] = {1, 2, 3, 4, 5};
+    int new_size;
+    
+    // Test invalid start
+    int* result = copy_array_start_end_loop(arr, 5, -1, 2, &new_size);
+    if (result != NULL) {
+        free(result);
+        return 0;
+    }
+    
+    // Test invalid end
+    result = copy_array_start_end_loop(arr, 5, 0, 5, &new_size);
+    if (result != NULL) {
+        free(result);
+        return 0;
+    }
+    
+    return 1;
+}
+
+
+
 // this is a list of all the unit tests
 int (*unitTests[])() = {
         test_swap_one,
