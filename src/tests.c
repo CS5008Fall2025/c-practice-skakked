@@ -289,12 +289,53 @@ int test_create_point_negative() {
     return 0;
 }
 
+/**
+ * Tests create_polygon with valid size
+*/
+int test_create_polygon_valid() {
+    printf("14. test_create_polygon_valid()\n");
+    Polygon* poly = create_polygon(4);
+    if (poly == NULL || poly->points == NULL) {
+        if (poly) free_polygon(poly);
+        return 0;
+    }
+    
+    if (poly->size == 4) {
+        free_polygon(poly);
+        return 1;
+    }
+    
+    free_polygon(poly);
+    return 0;
+}
+
+/**
+ * Tests create_polygon with invalid size
+*/
+int test_create_polygon_invalid() {
+    printf("15. test_create_polygon_invalid()\n");
+    Polygon* poly = create_polygon(-1);
+    if (poly != NULL) {
+        free_polygon(poly);
+        return 0;
+    }
+    
+    poly = create_polygon(0);
+    if (poly != NULL) {
+        free_polygon(poly);
+        return 0;
+    }
+    
+    return 1;
+}
+
 // this is a list of all the unit tests
 int (*unitTests[])() = {
         test_swap_one,
         test_create_array_of_ints_fib,
         // add more test function names here
 };
+
 
 int main(int argc, char const *argv[])
 {
