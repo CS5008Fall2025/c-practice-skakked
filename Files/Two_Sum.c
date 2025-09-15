@@ -67,4 +67,6 @@ int* twoSum(int* nums, int numsSize, int target, int* returnSize) {
  * In C, I must malloc the result, set *returnSize to 2 on success, and remember the caller will free it; if nothing is found, set *returnSize = 0, free the buffer, and return NULL. 
  * We return indices, not values, so sorting would lose positions unless we track them. A hash map could make it O(n), but in C that adds a lot of code and memory handling, 
  * so the brute-force version is fine for small to medium inputs and easy to get right. 
+ * I comapred my solution to the leetcode solution and I think some solutions were faster but used more memory, and some were slower but used less memory.
+ * The brute-force solution is O(n^2) time and O(1) space, while a hash map solution would be O(n) time and O(n) space.
  */
