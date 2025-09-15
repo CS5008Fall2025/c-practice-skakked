@@ -35,7 +35,22 @@ int test_swap_two(){
     return 0;
 }
  
-
+/**
+ * Tests the create_array_of_ints_fib function
+*/
+int test_create_array_of_ints_fib() {
+    printf("3. test_create_array_of_ints_fib()\n"); // Test for Fibonacci sequence array creation
+    int* arr = create_array_of_ints_fib(5); 
+    int expected[] = {1, 1, 2, 3, 5};
+    for (int i = 0; i < 5; i++) {
+        if (arr[i] != expected[i]) { // Compare each element with expected values
+            free(arr);
+            return 0;
+        }
+    }
+    free(arr);
+    return 1;
+}
 
 
  * Tests a basic swap
