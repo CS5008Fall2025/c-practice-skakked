@@ -251,6 +251,24 @@ int test_copy_array_invalid_bounds() {
     return 1;
 }
 
+/**
+ * Tests create_point with positive values
+*/
+int test_create_point_positive() {
+    printf("12. test_create_point_positive()\n");
+    Point* p = create_point(5, 10);
+    if (p == NULL) {
+        return 0;
+    }
+    
+    if (p->x == 5 && p->y == 10) {
+        free(p);
+        return 1;
+    }
+    
+    free(p);
+    return 0;
+}
 
 
 // this is a list of all the unit tests
