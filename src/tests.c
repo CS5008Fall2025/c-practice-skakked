@@ -270,6 +270,24 @@ int test_create_point_positive() {
     return 0;
 }
 
+/**
+ * Tests create_point with negative values
+*/
+int test_create_point_negative() {
+    printf("13. test_create_point_negative()\n");
+    Point* p = create_point(-3, -7);
+    if (p == NULL) {
+        return 0;
+    }
+    
+    if (p->x == -3 && p->y == -7) {
+        free(p);
+        return 1;
+    }
+    
+    free(p);
+    return 0;
+}
 
 // this is a list of all the unit tests
 int (*unitTests[])() = {
