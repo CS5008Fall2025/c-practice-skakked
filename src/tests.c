@@ -110,6 +110,33 @@ int test_create_array_of_ints_fib_edge() {
     return 1;
 }
 
+/**
+ * Tests reverse_array with even size
+*/
+int test_reverse_array_even() {
+    printf("5. test_reverse_array_even()\n");
+    int arr[] = {1, 2, 3, 4};
+    reverse_array(arr, 4);
+    if (arr[0] == 4 && arr[1] == 3 && arr[2] == 2 && arr[3] == 1) {
+        return 1;
+    }
+    return 0;
+}
+
+/**
+ * Tests reverse_array with odd size
+*/
+int test_reverse_array_odd() {
+    printf("6. test_reverse_array_odd()\n");
+    int arr[] = {1, 2, 3, 4, 5};
+    reverse_array(arr, 5);
+    if (arr[0] == 5 && arr[1] == 4 && arr[2] == 3 && arr[3] == 2 && arr[4] == 1) {
+        return 1;
+    }
+    return 0;
+}
+
+
 // this is a list of all the unit tests
 int (*unitTests[])() = {
         test_swap_one,
